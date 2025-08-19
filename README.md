@@ -30,4 +30,3 @@ To compile and run the calculator on Linux/macOS/WSL:
 ```bash
 gcc scientific_calculator.c -o calculator -lm
 ./calculator
-xsss
