@@ -1,31 +1,24 @@
 # 🧮 Scientific Calculator (C Language)
 
-This is a **console-based scientific calculator** written in C. It supports a wide range of mathematical operations including basic arithmetic, trigonometry (in both radians and degrees), logarithmic and exponential functions, factorials, and more.
+This is a terminal-based **Scientific Calculator** developed using C.  
+It was built as part of my learning during the **first semester of IT at GCET**.
 
 ---
 
-## 🚀 Features
+## 🔧 Features
 
-- ➕ Addition  
-- ➖ Subtraction  
-- ✖️ Multiplication  
-- ➗ Division  
-- 🔢 Power (x^y)  
-- √ Square Root  
-- 📐 Trigonometric Functions  
-  - Sine, Cosine, Tangent (in **radians** and **degrees**)  
-- 📉 Log base 10 and Natural Log (ln)  
-- 🧮 Exponential (e^x)  
-- ❗ Factorial (up to 20)  
-- % Modulus  
-- 🔄 Degrees ↔ Radians Conversion  
-- ✅ Input Validation & Error Handling
+🔹 Basic arithmetic (Addition, Subtraction, Multiplication, Division)  
+🔹 Power and Square Root  
+🔹 Trigonometric functions (Sine, Cosine, Tangent) in **degrees and radians**  
+🔹 Log base 10 and Natural Log (ln)  
+🔹 Exponential function (e^x)  
+🔹 Factorials (up to 20), Modulus  
+🔹 Unit conversions: Degrees ↔ Radians  
+🔹 Input validation and error handling
 
 ---
 
-## 🛠️ Compilation & Running
-
-To compile and run the calculator on Linux/macOS/WSL:
+## 🖥️ How to Compile and Run
 
 ```bash
 gcc scientific_calculator.c -o calculator -lm
