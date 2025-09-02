@@ -1,310 +1,261 @@
-// Scientific Calculator
+//scientific calculator
 #include <stdio.h>
-#include <math.h>
 #include <stdlib.h>
+#include <math.h>
+#include <string.h>
 
-// Define M_PI if not already defined
-#ifndef M_PI
-#define M_PI 3.14159265358979323846
-#endif
-
-// Function to calculate factorial (iterative)
-long long factorial(int n)
-{
-    if (n < 0)
-        return -1;
-    if (n > 20)
-        return -2; // Overflow for long long
-    if (n == 0 || n == 1)
-        return 1;
-    long long fact = 1;
-    for (int i = 2; i <= n; i++)
-        fact *= i;
-    return fact;
+long long factorial(int n) {
+    if (n < 0) return -1;
+    if (n == 0 || n == 1) return 1;
+    long long f = 1;
+    for (int i = 2; i <= n; i++) f *= i;
+    return f;
 }
 
-// Function to clear input buffer
 void clear_input_buffer() {
     int c;
-    while ((c = getchar()) != '\n' && c != EOF);
+    while ((c = getchar()) != '\n' && c != EOF) {}
 }
 
-int main()
-{
+int main() {
     int choice;
-    double num1, num2, result;
-    int int_num;
-
-    while (1)
-    {
-        printf("\nScientific Calculator Menu:\n");
+    double a, b, result;
+    do {
+        printf("\n--- Scientific Calculator ---\n");
         printf("1. Addition\n");
         printf("2. Subtraction\n");
         printf("3. Multiplication\n");
         printf("4. Division\n");
-        printf("5. Power (x^y)\n");
+        printf("5. Power\n");
         printf("6. Square Root\n");
-        printf("7. Sine (in radians)\n");
-        printf("8. Cosine (in radians)\n");
-        printf("9. Tangent (in radians)\n");
-        printf("10. Sine (in degrees)\n");
-        printf("11. Cosine (in degrees)\n");
-        printf("12. Tangent (in degrees)\n");
-        printf("13. Log base 10\n");
-        printf("14. Natural Log (ln)\n");
-        printf("15. Exponential (e^x)\n");
-        printf("16. Factorial\n");
-        printf("17. Modulus\n");
-        printf("18. Degrees to Radians\n");
-        printf("19. Radians to Degrees\n");
-        printf("20. Clear Input Buffer\n");
-        printf("21. Exit\n");
-        printf("Enter your choice: ");
-
+        printf("7. Log (base e)\n");
+        printf("8. Log10\n");
+        printf("9. Sine\n");
+        printf("10. Cosine\n");
+        printf("11. Tangent\n");
+        printf("12. Factorial\n");
+        printf("13. Modulus\n");
+        printf("14. Absolute\n");
+        printf("15. Ceiling\n");
+        printf("16. Floor\n");
+        printf("17. Exponential (e^x)\n");
+        printf("18. Cube Root\n");
+        printf("19. Reciprocal\n");
+        printf("20. Percentage\n");
+        printf("21. Square\n");
+        printf("22. Permutation (nPr)\n");
+        printf("23. Combination (nCr)\n");
+        printf("0. Exit\n");
+        printf("Enter choice: ");
         if (scanf("%d", &choice) != 1) {
-            printf("Invalid input! Please enter a number.\n");
+            printf("Invalid input!\n");
             clear_input_buffer();
             continue;
         }
-
-        switch (choice)
-        {
-        case 1:
-            printf("Enter two numbers: ");
-            if (scanf("%lf %lf", &num1, &num2) != 2) {
-                printf("Invalid input!\n");
-                clear_input_buffer();
-                break;
-            }
-            result = num1 + num2;
-            printf("Result: %.2lf\n", result);
-            break;
-        case 2:
-            printf("Enter two numbers: ");
-            if (scanf("%lf %lf", &num1, &num2) != 2) {
-                printf("Invalid input!\n");
-                clear_input_buffer();
-                break;
-            }
-            result = num1 - num2;
-            printf("Result: %.2lf\n", result);
-            break;
-        case 3:
-            printf("Enter two numbers: ");
-            if (scanf("%lf %lf", &num1, &num2) != 2) {
-                printf("Invalid input!\n");
-                clear_input_buffer();
-                break;
-            }
-            result = num1 * num2;
-            printf("Result: %.2lf\n", result);
-            break;
-        case 4:
-            printf("Enter two numbers: ");
-            if (scanf("%lf %lf", &num1, &num2) != 2) {
-                printf("Invalid input!\n");
-                clear_input_buffer();
-                break;
-            }
-            if (num2 == 0)
-                printf("Error: Division by zero!\n");
-            else {
-                result = num1 / num2;
+        switch (choice) {
+            case 1:
+                printf("Enter two numbers: ");
+                scanf("%lf %lf", &a, &b);
+                result = a + b;
                 printf("Result: %.2lf\n", result);
-            }
-            break;
-        case 5:
-            printf("Enter base and exponent: ");
-            if (scanf("%lf %lf", &num1, &num2) != 2) {
-                printf("Invalid input!\n");
-                clear_input_buffer();
                 break;
-            }
-            result = pow(num1, num2);
-            printf("Result: %.2lf\n", result);
-            break;
-        case 6:
-            printf("Enter a number: ");
-            if (scanf("%lf", &num1) != 1) {
-                printf("Invalid input!\n");
-                clear_input_buffer();
-                break;
-            }
-            if (num1 < 0)
-                printf("Error: Negative number!\n");
-            else {
-                result = sqrt(num1);
+            case 2:
+                printf("Enter two numbers: ");
+                scanf("%lf %lf", &a, &b);
+                result = a - b;
                 printf("Result: %.2lf\n", result);
-            }
-            break;
-        case 7:
-            printf("Enter a number (in radians): ");
-            if (scanf("%lf", &num1) != 1) {
-                printf("Invalid input!\n");
-                clear_input_buffer();
                 break;
-            }
-            result = sin(num1);
-            printf("Result: %.2lf\n", result);
-            break;
-        case 8:
-            printf("Enter a number (in radians): ");
-            if (scanf("%lf", &num1) != 1) {
-                printf("Invalid input!\n");
-                clear_input_buffer();
-                break;
-            }
-            result = cos(num1);
-            printf("Result: %.2lf\n", result);
-            break;
-        case 9:
-            printf("Enter a number (in radians): ");
-            if (scanf("%lf", &num1) != 1) {
-                printf("Invalid input!\n");
-                clear_input_buffer();
-                break;
-            }
-            result = tan(num1);
-            printf("Result: %.2lf\n", result);
-            break;
-        case 10: // Sine in degrees
-            printf("Enter angle in degrees: ");
-            if (scanf("%lf", &num1) != 1) {
-                printf("Invalid input!\n");
-                clear_input_buffer();
-                break;
-            }
-            result = sin(num1 * M_PI / 180.0);
-            printf("Result: %.2lf\n", result);
-            break;
-        case 11: // Cosine in degrees
-            printf("Enter angle in degrees: ");
-            if (scanf("%lf", &num1) != 1) {
-                printf("Invalid input!\n");
-                clear_input_buffer();
-                break;
-            }
-            result = cos(num1 * M_PI / 180.0);
-            printf("Result: %.2lf\n", result);
-            break;
-        case 12: // Tangent in degrees
-            printf("Enter angle in degrees: ");
-            if (scanf("%lf", &num1) != 1) {
-                printf("Invalid input!\n");
-                clear_input_buffer();
-                break;
-            }
-            result = tan(num1 * M_PI / 180.0);
-            printf("Result: %.2lf\n", result);
-            break;
-        case 13:
-            printf("Enter a number: ");
-            if (scanf("%lf", &num1) != 1) {
-                printf("Invalid input!\n");
-                clear_input_buffer();
-                break;
-            }
-            if (num1 <= 0)
-                printf("Error: Log of non-positive number!\n");
-            else {
-                result = log10(num1);
+            case 3:
+                printf("Enter two numbers: ");
+                scanf("%lf %lf", &a, &b);
+                result = a * b;
                 printf("Result: %.2lf\n", result);
-            }
-            break;
-        case 14:
-            printf("Enter a number: ");
-            if (scanf("%lf", &num1) != 1) {
-                printf("Invalid input!\n");
-                clear_input_buffer();
                 break;
-            }
-            if (num1 <= 0)
-                printf("Error: Ln of non-positive number!\n");
-            else {
-                result = log(num1);
+            case 4:
+                printf("Enter two numbers: ");
+                scanf("%lf %lf", &a, &b);
+                if (b == 0) {
+                    printf("Error: Division by zero!\n");
+                } else {
+                    result = a / b;
+                    printf("Result: %.2lf\n", result);
+                }
+                break;
+            case 5:
+                printf("Enter base and exponent: ");
+                scanf("%lf %lf", &a, &b);
+                result = pow(a, b);
                 printf("Result: %.2lf\n", result);
-            }
-            break;
-        case 15:
-            printf("Enter a number: ");
-            if (scanf("%lf", &num1) != 1) {
-                printf("Invalid input!\n");
-                clear_input_buffer();
+                break;
+            case 6:
+                printf("Enter number: ");
+                scanf("%lf", &a);
+                if (a < 0) {
+                    printf("Error: Negative number!\n");
+                } else {
+                    result = sqrt(a);
+                    printf("Result: %.2lf\n", result);
+                }
+                break;
+            case 7:
+                printf("Enter number: ");
+                scanf("%lf", &a);
+                if (a <= 0) {
+                    printf("Error: Invalid input!\n");
+                } else {
+                    result = log(a);
+                    printf("Result: %.2lf\n", result);
+                }
+                break;
+            case 8:
+                printf("Enter number: ");
+                scanf("%lf", &a);
+                if (a <= 0) {
+                    printf("Error: Invalid input!\n");
+                } else {
+                    result = log10(a);
+                    printf("Result: %.2lf\n", result);
+                }
+                break;
+            case 9:
+                printf("Enter angle in radians: ");
+                scanf("%lf", &a);
+                result = sin(a);
+                printf("Result: %.2lf\n", result);
+                break;
+            case 10:
+                printf("Enter angle in radians: ");
+                scanf("%lf", &a);
+                result = cos(a);
+                printf("Result: %.2lf\n", result);
+                break;
+            case 11:
+                printf("Enter angle in radians: ");
+                scanf("%lf", &a);
+                result = tan(a);
+                printf("Result: %.2lf\n", result);
+                break;
+            case 12: {
+                int n;
+                printf("Enter integer: ");
+                scanf("%d", &n);
+                long long f = factorial(n);
+                if (f < 0) {
+                    printf("Error: Invalid input!\n");
+                } else {
+                    printf("Result: %lld\n", f);
+                }
                 break;
             }
-            result = exp(num1);
-            printf("Result: %.2lf\n", result);
-            break;
-        case 16:
-            printf("Enter a non-negative integer (<=20): ");
-            if (scanf("%d", &int_num) != 1) {
-                printf("Invalid input!\n");
-                clear_input_buffer();
+            case 13:
+                printf("Enter two integers: ");
+                int x, y;
+                scanf("%d %d", &x, &y);
+                if (y == 0) {
+                    printf("Error: Division by zero!\n");
+                } else {
+                    printf("Result: %d\n", x % y);
+                }
+                break;
+            case 14:
+                printf("Enter number: ");
+                scanf("%lf", &a);
+                result = fabs(a);
+                printf("Result: %.2lf\n", result);
+                break;
+            case 15:
+                printf("Enter number: ");
+                scanf("%lf", &a);
+                result = ceil(a);
+                printf("Result: %.2lf\n", result);
+                break;
+            case 16:
+                printf("Enter number: ");
+                scanf("%lf", &a);
+                result = floor(a);
+                printf("Result: %.2lf\n", result);
+                break;
+            case 17:
+                printf("Enter number: ");
+                scanf("%lf", &a);
+                result = exp(a);
+                printf("Result: %.2lf\n", result);
+                break;
+            case 18:
+                printf("Enter number: ");
+                scanf("%lf", &a);
+                result = cbrt(a);
+                printf("Result: %.2lf\n", result);
+                break;
+            case 19:
+                printf("Enter number: ");
+                scanf("%lf", &a);
+                if (a == 0) {
+                    printf("Error: Division by zero!\n");
+                } else {
+                    result = 1.0 / a;
+                    printf("Result: %.2lf\n", result);
+                }
+                break;
+            case 20:
+                printf("Enter value and total: ");
+                scanf("%lf %lf", &a, &b);
+                if (b == 0) {
+                    printf("Error: Division by zero!\n");
+                } else {
+                    result = (a / b) * 100;
+                    printf("Result: %.2lf%%\n", result);
+                }
+                break;
+            case 21:
+                printf("Enter number: ");
+                scanf("%lf", &a);
+                result = a * a;
+                printf("Result: %.2lf\n", result);
+                break;
+            case 22: {
+                int n, r;
+                printf("Enter n and r: ");
+                scanf("%d %d", &n, &r);
+                if (n < 0 || r < 0 || r > n) {
+                    printf("Error: Invalid values!\n");
+                } else {
+                    long long fn = factorial(n);
+                    long long fnr = factorial(n - r);
+                    if (fn < 0 || fnr < 0) {
+                        printf("Error: Overflow!\n");
+                    } else {
+                        result = (double)fn / fnr;
+                        printf("Result: %.0lf\n", result);
+                    }
+                }
                 break;
             }
-            {
-                long long fact = factorial(int_num);
-                if (fact == -1)
-                    printf("Error: Factorial of negative number!\n");
-                else if (fact == -2)
-                    printf("Error: Too large! Overflow.\n");
-                else
-                    printf("Result: %lld\n", fact);
-            }
-            break;
-        case 17:
-        {
-            int a, b;
-            printf("Enter two integers: ");
-            if (scanf("%d %d", &a, &b) != 2) {
-                printf("Invalid input!\n");
-                clear_input_buffer();
+            case 23: {
+                int n, r;
+                printf("Enter n and r: ");
+                scanf("%d %d", &n, &r);
+                if (n < 0 || r < 0 || r > n) {
+                    printf("Error: Invalid values!\n");
+                } else {
+                    long long fn = factorial(n);
+                    long long fr = factorial(r);
+                    long long fnr = factorial(n - r);
+                    if (fn < 0 || fr < 0 || fnr < 0) {
+                        printf("Error: Overflow!\n");
+                    } else {
+                        result = (double)fn / (fr * fnr);
+                        printf("Result: %.0lf\n", result);
+                    }
+                }
                 break;
             }
-            if (b == 0) {
-                printf("Error: Division by zero!\n");
+            case 0:
+                printf("Exiting...\n");
                 break;
-            }
-            printf("Result: %d\n", a % b);
-            break;
+            default:
+                printf("Invalid choice!\n");
         }
-        case 18:
-            printf("Enter angle in degrees: ");
-            if (scanf("%lf", &num1) != 1) {
-                printf("Invalid input!\n");
-                clear_input_buffer();
-                break;
-            }
-            result = num1 * M_PI / 180.0;
-            printf("Result: %.6lf radians\n", result);
-            break;
-        case 19:
-            printf("Enter angle in radians: ");
-            if (scanf("%lf", &num1) != 1) {
-                printf("Invalid input!\n");
-                clear_input_buffer();
-                break;
-            }
-            result = num1 * 180.0 / M_PI;
-            printf("Result: %.6lf degrees\n", result);
-            break;
-        case 20:
-            clear_input_buffer();
-            printf("Input buffer cleared.\n");
-            break;
-        case 21:
-            printf("Exiting calculator. Goodbye!\n");
-            return 0;
-        default:
-            printf("Invalid choice! Please try again.\n");
-            clear_input_buffer();
-        }
-    }
-
+    } while (choice != 0);
     return 0;
 }
-// Function to clear input buffer
-void clear_input_buffer() {
-    int c;
-    while ((c = getchar()) != '\n' && c != EOF);
-}  
